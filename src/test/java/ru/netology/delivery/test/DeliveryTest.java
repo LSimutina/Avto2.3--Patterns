@@ -1,6 +1,5 @@
 package ru.netology.delivery.test;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -8,13 +7,10 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 import ru.netology.delivery.data.DataGenerator;
 
-import java.time.Duration;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DeliveryTest {
 
@@ -42,7 +38,6 @@ class DeliveryTest {
         $("[data-test-id='success-notification'] .notification__content")
                 .shouldHave(text("Встреча успешно запланирована на " + firstMeetingDate))
                 .shouldBe(visible);
-
         $("[data-test-id=date] input.input__control").doubleClick().sendKeys(Keys.BACK_SPACE);
         $("[data-test-id=date] input.input__control").sendKeys(secondMeetingDate);
         $(byText("Запланировать")).click();
